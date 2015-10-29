@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="debug">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/platforms/android/build/intermediates/pre-dexed/debug/support-annotations-23.1.0-ade7087c8045c86684389ad94ab4be4c71a82911.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/build/intermediates/pre-dexed/debug/altbeacon-7190d5e8167b181dc6aa31aea4f4bb3b6e703451.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/build/intermediates/pre-dexed/debug/classes-7c49c9bb467d0a9e5eb92645b5d105356e5fd0e0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-adfa40bf83f157a82196e8c7e55cc8561e19c575.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/build/intermediates/pre-dexed/debug/classes-9b9092facc985420c5feeb5ef8d9b0060f688db4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

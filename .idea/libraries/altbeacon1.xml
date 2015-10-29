@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="altbeacon1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/cordova/plugins/com.unarin.cordova.beacon/libs/android/altbeacon.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
