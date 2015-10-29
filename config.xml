@@ -46,13 +46,8 @@
   
   <gap:plugin name="com.vladstirbu.cordova.promise" version="1.0.0" />
   <gap:plugin name="com.unarin.cordova.beacon" version="3.2.1" />
-<<<<<<< .mine
   <gap:plugin name="com.ionic.keyboard" version="1.0.3" />
   <!--<gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1" />-->
-=======
-  <gap:plugin name="com.ionic.keyboard" version="1.0.3" />
-  <gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1" />-->
->>>>>>> .theirs
   <gap:plugin name="com.cowbell.cordova.geofence" source="npm"/>
   
 </widget>
