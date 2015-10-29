@@ -7,7 +7,7 @@
 
 var app = angular.module('starter', ['ionic']);
 
-app.factory('geoService', function ($rootScope, $document, $timeout, $ionicPlatform) {
+/*app.factory('geoService', function ($rootScope, $document, $timeout, $ionicPlatform) {
          var regions={"current":{}};
          return {
             initialize : function() {
@@ -65,7 +65,7 @@ app.factory('geoService', function ($rootScope, $document, $timeout, $ionicPlatf
             }
          };
 });
-
+*/
 
 app.factory('beaconService', function ($rootScope, $document, $timeout, $ionicPlatform) {
             var beaconRegion = {};
@@ -274,12 +274,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/splash');
 });
 
-app.controller('SplashCtrl',  function($q, $ionicPlatform, $scope, $state, $timeout, beaconService, geoService) {
+app.controller('SplashCtrl',  function($q, $ionicPlatform, $scope, $state, $timeout, beaconService) {
 
   //alert('nint');
 
       $ionicPlatform.ready(function () {
-         geoService.initialize();
+         //geoService.initialize();
 
         if( !!window.cordova ) {
            //check local notification permission
@@ -324,7 +324,7 @@ app.controller('CollectorCtrl',  function($stateParams, $state, $scope) {
     $scope.beacon = $stateParams.beacon ? $stateParams.beacon : null;
 });
 
-app.controller('AppCtrl',  ["$scope","$rootScope","$document","$state","beaconService", "geoService",function($scope, $rootScope, $document, $state, beaconService,geoService) {
+app.controller('AppCtrl',  ["$scope","$rootScope","$document","$state","beaconService",function($scope, $rootScope, $document, $state, beaconService) {
 
   //alert('nint');
 
