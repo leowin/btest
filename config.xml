@@ -46,7 +46,7 @@
     <splash src="resources/android/splash/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
     <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
-  <gap:config-file platform="android" parent="/manifest" mode="merge">
+  <gap:config-file platform="android" parent="/manifest" mode="add">
 	<uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
