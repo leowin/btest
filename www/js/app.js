@@ -212,12 +212,12 @@ app.factory('beaconService', function ($rootScope, $document, $timeout, $ionicPl
                          }
                    });
                 },
-               isBluetoothEnabled : function( callbackFunction ) {  //callback is: function(isEnabled) {}
+               isBluetoothEnabled : function( callbackFunction, callbackFailed ) {  //callback is: function(isEnabled) {}
                   $ionicPlatform.ready(function () {
                       if(  !!window.cordova ) {
                           locationManager.isBluetoothEnabled()
                            .then(callbackFunction)
-                           .fail(console.error)
+                           .fail(callbackFailed)
                            .done();
                        }
                        else callbackFunction(false);
@@ -278,33 +278,33 @@ app.controller('SplashCtrl',  function($q, $ionicPlatform, $scope, $state, $time
 
   //alert('nint');
 
-      $ionicPlatform.ready(function () {
-         //geoService.initialize();
+    $ionicPlatform.ready(function () {
+        //geoService.initialize();
 
         if( !!window.cordova ) {
-           //check local notification permission
-           cordova.plugins.notification.local.hasPermission(function (granted) {
-             if( !granted ) {
-                 cordova.plugins.notification.local.registerPermission(function (granted) {
-                    //todo: remember setting
-                 });
-             }
-           });
-           //check bluetooth authorization
-           cordova.plugins.locationManager.requestAlwaysAuthorization();
-           //cordova.plugins.locationManager.requestWhenInUseAuthorization();
-         }
-         beaconService.isBluetoothEnabled( function(isEnabled) {
+            //check local notification permission
+            cordova.plugins.notification.local.hasPermission(function (granted) {
+                if( !granted ) {
+                    cordova.plugins.notification.local.registerPermission(function (granted) {
+                        //todo: remember setting
+                    });
+                }
+            });
+            //check bluetooth authorization
+            cordova.plugins.locationManager.requestAlwaysAuthorization();
+            //cordova.plugins.locationManager.requestWhenInUseAuthorization();
+        }
+        beaconService.isBluetoothEnabled( function(isEnabled) {
             if( !isEnabled) {
-              $state.transitionTo('nobluetooth');
+                $state.transitionTo('nobluetooth');
             }
             else {
-              $timeout(function() {$state.transitionTo("app.search");}, 1000);
-          }
-      });
-      });
-
-});
+                $timeout(function() {$state.transitionTo("app.search");}, 1000);
+            }
+        }, function() {
+            $state.transitionTo('app.search');
+        });
+    });
 
 app.controller('NoBlCtrl',  function($q, $ionicPlatform, $scope, $state, $timeout, beaconService) {
       $scope.enableBluetooth = function() {
