@@ -21,7 +21,6 @@
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
   <feature name="http://api.phonegap.com/1.0/network"/>
-  <feature name="http://api.phonegap.com/1.0/notification"/>
   
   <allow-navigation href="http://*/*" />
   <allow-navigation href="https://*/*" />
@@ -29,7 +28,7 @@
   
   <platform name="android"> 
     <preference name="android-minSdkVersion" value="19"/> 
-	<preference name="android-targetSdkVersion" value="23"/> 
+	<preference name="android-targetSdkVersion" value="22"/> 
     <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
     <icon src="resources/android/icon/drawable-mdpi-icon.png" density="mdpi"/>
     <icon src="resources/android/icon/drawable-hdpi-icon.png" density="hdpi"/>

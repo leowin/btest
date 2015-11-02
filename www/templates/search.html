@@ -2,5 +2,12 @@
   <ion-content>
     <h1>Search</h1>
     <p>Fahrzeugsuche</p>
+
+          <h2>Log:</h2>
+              <ion-list>
+                  <ion-item collection-repeat="entry in log.entries" item-width="100%" item-height="40px">
+                      {{entry}}
+                  </ion-item>
+              </ion-list>
   </ion-content>
 </ion-view>
