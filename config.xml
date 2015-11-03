@@ -57,7 +57,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-feature android:name="android.hardware.bluetooth" />
   </gap:config-file>
-  <gap:plugin name="cordova-plugin-geofence" spec="^0.4.1" source="npm" />
+  <!--<gap:plugin name="cordova-plugin-geofence" spec="^0.4.1" source="npm" />-->
   <gap:plugin name="com.vladstirbu.cordova.promise" version="1.0.0" />
   <gap:plugin name="cordova-plugin-ibeacon" source="npm" />
   <gap:plugin name="com.ionic.keyboard" version="1.0.3" />
