@@ -75,8 +75,7 @@ app.controller('SplashCtrl', function ($q, $ionicPlatform, $scope, $state, $time
             cordova.plugins.locationManager.requestAlwaysAuthorization();
             //cordova.plugins.locationManager.requestWhenInUseAuthorization();
         }
-        $timeout(function () { $state.transitionTo("app.search"); }, 1000);
-        /*beaconService.isBluetoothEnabled(function (isEnabled) {
+        beaconService.isBluetoothEnabled(function (isEnabled) {
             if (!isEnabled) {
                 $state.transitionTo('nobluetooth');
             }
@@ -85,7 +84,7 @@ app.controller('SplashCtrl', function ($q, $ionicPlatform, $scope, $state, $time
             }
         }, function () {
             $state.transitionTo('app.search');
-        });*/
+        });
     });
 });
 
