@@ -77,13 +77,13 @@ app.controller('SplashCtrl', function ($q, $ionicPlatform, $scope, $state, $time
         }
         beaconService.isBluetoothEnabled(function (isEnabled) {
             if (!isEnabled) {
-                $state.transitionTo('nobluetooth');
+                $state.transitionTo('nobluetooth', { location: 'replace' });
             }
             else {
                 $timeout(function () { $state.transitionTo("app.search"); }, 1000);
             }
         }, function () {
-            $state.transitionTo('app.search');
+            $state.transitionTo('app.search', { location: 'replace' });
         });
     });
 });

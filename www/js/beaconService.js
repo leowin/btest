@@ -5,6 +5,16 @@
     logService.log("beaconService init");
 
     var locationManager = null;
+    var bgPlugin = new Promise(function(resolve, reject) {
+        $ionicPlatform.ready(function () {
+            if (!!window.cordova) {
+                resolve(cordova.plugins.backgroundMode)
+            }
+            else {
+                resolve({ enable: function () { this.onactivate();}, disable: function() {this.ondeactivate();}, isEnabled: function () { return true; }, isActive: function () { return false; }, onactivate: function () { }, ondeactivate: function () { }, onfailure: function (errorcode) { logService.log('bgPlugin-onfailure: ' + errorcode); } });
+            }
+        });
+    });
 
     $ionicPlatform.ready(function () {
         if (!!window.cordova) {
@@ -64,6 +74,9 @@
         }
 
         delegate.didEnterRegion = function (pluginResult) {
+            bgPlugin.then(function (pl) {
+                pl.enable();
+            });
             logService.log('didEnterRegion: ' + JSON.stringify(pluginResult) + (beacons.paused ? " (paused)" : ""))
 
             if (beacons.rangingStarted)
@@ -79,6 +92,10 @@
 
         delegate.didExitRegion = function (pluginResult) {
             logService.log('didExitRegion: ' + JSON.stringify(pluginResult) + (beacons.paused ? " (paused)" : ""))
+            bgPlugin.then(function (pl) {
+                pl.disable();
+            });
+
             if (!beacons.rangingStarted)
                 return;
             locationManager.stopRangingBeaconsInRegion(bR)
