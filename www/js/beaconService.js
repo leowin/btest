@@ -38,11 +38,11 @@
         var delegate = new locationManager.Delegate()
 
         delegate.didDetermineStateForRegion = function (pluginResult) {
-            //logService.log('didDetermineStateForRegion: ' + JSON.stringify(pluginResult))
+            logService.log('didDetermineStateForRegion: ' + JSON.stringify(pluginResult))
         }
 
         delegate.didStartMonitoringForRegion = function (pluginResult) {
-            //logService.log('didStartMonitoringForRegion:' + JSON.stringify(pluginResult))
+            logService.log('didStartMonitoringForRegion:' + JSON.stringify(pluginResult))
         }
 
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
@@ -74,16 +74,17 @@
         }
 
         delegate.didEnterRegion = function (pluginResult) {
+            logService.log('didEnterRegion: ' + JSON.stringify(pluginResult) + (beacons.paused ? " (paused)" : ""))
             bgPlugin.then(function (pl) {
                 pl.enable();
             });
-            logService.log('didEnterRegion: ' + JSON.stringify(pluginResult) + (beacons.paused ? " (paused)" : ""))
-
             if (beacons.rangingStarted)
                 return;
 
             locationManager.startRangingBeaconsInRegion(bR)
-                    .fail(logService.error)
+                    .fail(function (error) {
+                        logService.log('startRangingBeaconsInReagon'  + error)
+                    })
                     .done(function () {
                         beacons.rangingStarted = true;
                         logService.log('rangingStarted' + (beacons.paused ? " (paused)" : ""))
@@ -99,7 +100,9 @@
             if (!beacons.rangingStarted)
                 return;
             locationManager.stopRangingBeaconsInRegion(bR)
-                                  .fail(logService.error)
+                                  .fail(function (error) {
+                                      logService.log('stopRangingBeaconsInRegion' + error)
+                                  })
                                     .done(function () {
                                         beacons.rangingStarted = false;
                                         logService.log('rangingStopped' + (beacons.paused ? " (paused)" : ""))
@@ -115,7 +118,9 @@
         bR.notifyEntryStateOnDisplay = true;
         // Start monitoring.
         locationManager.startMonitoringForRegion(bR)
-          .fail(logService.error)
+          .fail(function (error) {
+              logService.log('startMonitoringForRegion' + error)
+          })
           .done();
 
     }
