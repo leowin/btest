@@ -38,7 +38,11 @@
         var delegate = new locationManager.Delegate()
 
         delegate.didDetermineStateForRegion = function (pluginResult) {
-            logService.log('didDetermineStateForRegion: ' + JSON.stringify(pluginResult))
+            logService.log('didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
+            if (pluginResult.state == "CLRegionStateInside" && region.major == bR.major) {
+                //give enter-Region a call, if inside
+                delegate.didEnterRegion(pluginResult);
+            }
         }
 
         delegate.didStartMonitoringForRegion = function (pluginResult) {
