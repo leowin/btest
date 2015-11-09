@@ -39,7 +39,7 @@
 
         delegate.didDetermineStateForRegion = function (pluginResult) {
             logService.log('didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
-            if (pluginResult.state == "CLRegionStateInside" && region.major == bR.major) {
+            if (pluginResult.state == "CLRegionStateInside" && pluginResult.region.major == beaconRegion.major) {
                 //give enter-Region a call, if inside
                 delegate.didEnterRegion(pluginResult);
             }
