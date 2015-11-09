@@ -53,7 +53,7 @@
             logService.log('didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult) + (beacons.paused ? " (paused)" : ""))
             var beacon = null;
             for (var i = 0; i < pluginResult.beacons.length; i++) {
-                if (pluginResult.beacons[i].rssi > -60 && (beacon == null || pluginResult.beacons[i].rssi > beacon.rssi))
+                if (pluginResult.beacons[i].rssi > -65 && (beacon == null || pluginResult.beacons[i].rssi > beacon.rssi))
                     beacon = pluginResult.beacons[i];
             }
             if (beacon == null)
